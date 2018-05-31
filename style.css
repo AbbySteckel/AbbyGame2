@@ -1,0 +1,12 @@
+div {
+
+    width: 70px;
+    height: 70px;
+    margin-top: 5px;
+
+}
+
+div.selected {
+    box-shadow:1px 12px 22px 1px #ffe57b;
+    border: solid 2px #ffe57b;
+}
