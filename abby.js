@@ -1,8 +1,9 @@
 red = ["#FEF1F2","#FAD2D4","#F5A4A8","#F1767C","#EC4850","#E82A32","#D91720","#BA141B","#9C1017","#7D0D12","#6E0C10","#4F080C"];
-green = [];
+green = ["#98FB98","#90EE90","#3CB371","#2E8B57","#008000","#006400","#67AA55","#92F477","#3AB83B","#1CC31E","#0F8E10","#037A04"];
 blue = [];
 selected = 0;
 
+//https://htmlcolorcodes.com/
 //color sort
 //function to change hex to denary
 //squares swap places when clicked
@@ -10,9 +11,16 @@ selected = 0;
 
 $(document).ready(function(){
 
-    $("#start").click(function(){
+    $("#red").click(function(){
         displayColors(red);
     });
+    $("#green").click(function(){
+        displayColors(green);
+    });
+    $("#blue").click(function(){
+        displayColors(blue);
+    });
+
     $("div").click(function (){
         selected++;
         $(".selected").removeClass('selected');
