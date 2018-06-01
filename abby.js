@@ -69,15 +69,18 @@ function swapColors(){
 }
 
 function checkSort(){
-    for(var i=0; i<9; i++){
+    for(var i=0; i<8; i++){
+        var j=i+1;
         var prev=getR("#"+i);
-        var next=getR("#"+i+1);
+        var next=getR("#"+j);
         if(prev>next){
             $("#verif").text('wrong order, try again');
-            break;
+
+        }
+        if(prev>next&&i==7){
+            $("#verif").text('good job');
         }
     }
-    $("#verif").text('good job');
 }
 
 function getR(id){
