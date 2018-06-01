@@ -3,7 +3,13 @@ div {
     width: 70px;
     height: 70px;
     margin-top: 5px;
+    position: relative;
 
+}
+
+#a1 {
+    top:-75px;
+    left: 75px;
 }
 
 div.selected {
