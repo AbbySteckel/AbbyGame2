@@ -17,9 +17,10 @@ $(document).ready(function(){
 
     $("#red").click(function(){
         $("#verif").text("");
-        displayColors(red);
         currentColor="red";
+        displayColors(red);
     });
+
     $("#green").click(function(){
         $("#verif").text("");
         displayColors(green);
@@ -31,7 +32,7 @@ $(document).ready(function(){
         currentColor="blue";
     });
 
-    $("div").click(function (){
+    $(".colors").click(function (){
         selected++;
         $(".selected").removeClass('selected');
         $(this).addClass('selected');
@@ -44,7 +45,18 @@ $(document).ready(function(){
 
 });
 
+function getColors(){
+    var slider=$("#hexRange").val();
+    var start=0;
+    if(currentColor=="red"){
+        for(var i=0; i<255/slider; i++){
+
+        }
+    }
+}
+
 function displayColors(arr){
+    getColors();
     var colorsUsed = [];
     var i=0;
     while (colorsUsed.length<9){
@@ -54,7 +66,7 @@ function displayColors(arr){
         }
     }
     for(var j=0; j<9; j++){
-        $("#"+j).css("background-color",colorsUsed[j]);
+        $("#c"+j).css("background-color",colorsUsed[j]);
     }
 }
 
@@ -91,15 +103,16 @@ function checkSort(){
     for(var i=0; i<8; i++){
         var j=i+1;
         if(currentColor=="red"){
-            var prev=getR("#"+i);
-            var next=getR("#"+j);
+            var prev=getR("#c"+i);
+            var next=getR("#c"+j);
         }
         if(currentColor=="green"){
-            var prev=getG("#"+i);
-            var next=getG("#"+j);
-        }else{
-            var prev=getB("#"+i);
-            var next=getB("#"+j);
+            var prev=getG("#c"+i);
+            var next=getG("#c"+j);
+        }
+        if(currentColor=="blue"){
+            var prev=getB("#c"+i);
+            var next=getB("#c"+j);
         }
 
         if(prev<next){
