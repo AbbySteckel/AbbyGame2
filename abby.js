@@ -1,4 +1,6 @@
-red = ["#FEF1F2","#FAD2D4","#F5A4A8","#F1767C","#EC4850","#E82A32","#D91720","#BA141B","#9C1017","#7D0D12","#6E0C10","#4F080C"];
+//red = ["#FEF1F2","#FAD2D4","#F5A4A8","#F1767C","#EC4850","#E82A32","#D91720","#BA141B","#9C1017","#7D0D12","#6E0C10","#4F080C"];
+//fffafa to ff0000
+red=[];
 green = ["#44FF8A","#43F585","#40EC80","#3DDB78","#38C96E","#33B262","#2D9955","#268148","#206F3D","#17502C"];
 blue = ["#17C8FF","#15BFF3","#14B6E8","#12A9D7","#1197C0","#1089AF","#0F7A9B","#0E6F8D","#0C617B","#0B546B","#094355"];
 selected = 0;
@@ -19,17 +21,18 @@ $(document).ready(function(){
         $("#verif").text("");
         currentColor="red";
         displayColors(red);
+        console.log(red);
     });
 
     $("#green").click(function(){
         $("#verif").text("");
-        displayColors(green);
         currentColor="green";
+        displayColors(green);
     });
     $("#blue").click(function(){
         $("#verif").text("");
-        displayColors(blue);
         currentColor="blue";
+        displayColors(blue);
     });
 
     $(".colors").click(function (){
@@ -47,10 +50,12 @@ $(document).ready(function(){
 
 function getColors(){
     var slider=$("#hexRange").val();
-    var start=0;
     if(currentColor=="red"){
-        for(var i=0; i<255/slider; i++){
-
+        var b=0;
+        for(var i=0; i<250/slider; i++){
+            var bg=denToHex(b)+denToHex(b);
+            red.push("#ff"+bg);
+            b+=slider;
         }
     }
 }
@@ -187,4 +192,18 @@ function hexToDen2(hex) {
         den+=15;
     }
     return den;
+}
+
+function denToHex(den){
+    var hex="";
+    var hexDigits=[0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+    if(den%16==0){
+        hex+=hexDigits[(den/16)-1];
+        hex+=0;
+    }
+    if(den%16!=0){
+        hex+=hexDigits[(den/16)-1];
+        hex+=hexDigits[(den%16)-1]
+    }
+    return hex;
 }
